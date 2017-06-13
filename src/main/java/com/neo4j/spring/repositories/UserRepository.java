@@ -13,9 +13,6 @@ public interface UserRepository extends GraphRepository<User> {
 	
 	@Query("MATCH (n) DETACH DELETE n")
 	public String deleteAllUser(@Param("name") String name);
-	
-	
-	
 }
 
 
