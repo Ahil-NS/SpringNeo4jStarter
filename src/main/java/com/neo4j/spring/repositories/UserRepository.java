@@ -10,7 +10,12 @@ public interface UserRepository extends GraphRepository<User> {
 
 	@Query("create (u:Node{id:{name}})")
 	public String createUser(@Param("name") String name);
-		
+	
+	@Query("MATCH (n) DETACH DELETE n")
+	public String deleteAllUser(@Param("name") String name);
+	
+	
+	
 }
 
 

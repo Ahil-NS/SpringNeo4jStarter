@@ -17,9 +17,11 @@ public class UserController {
 
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST, produces = "application/json")
 	public String createUser(@RequestParam String name) {
-		System.out.println(name);
 		return userRepository.createUser(name);
-
 	}
 
+	@RequestMapping(value = "/deleteAllUser", method = RequestMethod.POST, produces = "application/json")
+	public String deleteUser(@RequestParam String name) {
+		return userRepository.deleteAllUser(name);
+	}
 }
