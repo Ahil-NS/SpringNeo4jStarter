@@ -9,15 +9,16 @@ import com.neo4j.spring.domain.User;
 public interface UserRepository extends GraphRepository<User> {
 
 	@Query("create (u:Node{name:{name},country:{country}})")
-	public String createUser(@Param("name") String name,@Param("country") String country);
-	
+	public String createUser(@Param("name") String name, @Param("country") String country);
+
 	@Query("MATCH (n) DETACH DELETE n")
 	public String deleteAllUser(@Param("name") String name);
+
+	@Query("MATCH (u:Node) WHERE u.name= {name} SET u.newname={newname}")
+	public String updateUser(@Param("name") String name, @Param("newname") String newname);
 	
-	 @Query("MATCH (u:Node) WHERE u.name= {name} SET u.newname={newname}")
-	 public String updateUser(@Param("name") String name,@Param("newname") String newname);
-	 
-	 
+	@Query("MATCH(u) RETURN u")
+	public User getUser(@Param("name") String name);
+
+
 }
-
-
