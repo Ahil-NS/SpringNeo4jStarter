@@ -17,12 +17,19 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST, produces = "application/json")
-	public String createUser(@RequestParam String name) {
-		return userService.createNode(name);
+	public String createUser(@RequestParam String name,@RequestParam String country) {
+		return userService.createNode(name,country);
 	}
 
 	@RequestMapping(value = "/deleteAllUser", method = RequestMethod.POST, produces = "application/json")
 	public String deleteUser(@RequestParam String name) {
 		return userService.deleteAllUser(name);
 	}
+	
+	@RequestMapping(value = "/updateUser", method = RequestMethod.POST, produces = "application/json")
+	public String updateUser(@RequestParam String name,@RequestParam String newname) {
+		return userService.updateUser(name,newname);
+	}
+	
+	
 }

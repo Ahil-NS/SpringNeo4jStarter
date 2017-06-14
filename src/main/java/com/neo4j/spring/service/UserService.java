@@ -11,14 +11,19 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
-	public String createNode(String name) {
+	public String createNode(String name,String country) {
 
-		return userRepository.createUser(name);
+		return userRepository.createUser(name,country);
 	}
 	
 	public String deleteAllUser(String name) {
 
 		return userRepository.deleteAllUser(name);
+	}
+	
+	public String updateUser(String name,String newname) {
+
+		return userRepository.updateUser(name, newname);
 	}
 
 
