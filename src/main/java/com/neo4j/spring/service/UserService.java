@@ -2,6 +2,8 @@ package com.neo4j.spring.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.neo4j.spring.domain.User;
 import com.neo4j.spring.repositories.UserRepository;
 import com.neo4j.spring.response.UserResponse;
@@ -27,22 +29,18 @@ public class UserService {
 		return userRepository.updateUser(name, newname);
 	}
 
-	public User getUser(String name, String country) {
-
-		return userRepository.getUser(name);
-	}
-
+	@Transactional
 	public UserResponse getUserCountry(String name) {
 		UserResponse response = new UserResponse();
 		User userName = userRepository.getUser(name);
-		System.out.println(userName.getCountry().toString());
+		response.setName(userName.getName());
+		response.setCountry(userName.getCountry());
 		return response;
-
 	}
-	
-	public String createRelationship(String name,String lovername) {
 
-		return userRepository.createRelationship(name,lovername);
+	public String createRelationship(String name, String lovername) {
+
+		return userRepository.createRelationship(name, lovername);
 	}
 
 }

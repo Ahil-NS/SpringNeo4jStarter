@@ -32,7 +32,7 @@ public class UserController {
 		return userService.updateUser(name, newname);
 	}
 
-	@RequestMapping(value = "/getUser", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/getUser", method = RequestMethod.GET, produces = "application/json")
 	public UserResponse getUser(@RequestParam String name) {
 		return userService.getUserCountry(name);
 	}
