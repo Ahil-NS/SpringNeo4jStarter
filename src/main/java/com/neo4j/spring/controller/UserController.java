@@ -37,4 +37,9 @@ public class UserController {
 		return userService.getUserCountry(name);
 	}
 
+	@RequestMapping(value = "/createRelationship", method = RequestMethod.POST, produces = "application/json")
+	public String createRelationship(@RequestParam String name, @RequestParam String lovername) {
+		return userService.createRelationship(name, lovername);
+	}
+
 }

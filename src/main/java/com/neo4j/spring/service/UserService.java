@@ -12,32 +12,37 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
-	public String createNode(String name,String country) {
+	public String createNode(String name, String country) {
 
-		return userRepository.createUser(name,country);
+		return userRepository.createUser(name, country);
 	}
-	
+
 	public String deleteAllUser(String name) {
 
 		return userRepository.deleteAllUser(name);
 	}
-	
-	public String updateUser(String name,String newname) {
+
+	public String updateUser(String name, String newname) {
 
 		return userRepository.updateUser(name, newname);
 	}
-	
-	public User getUser(String name,String country) {
+
+	public User getUser(String name, String country) {
 
 		return userRepository.getUser(name);
 	}
-	
-	public UserResponse getUserCountry(String name){
+
+	public UserResponse getUserCountry(String name) {
 		UserResponse response = new UserResponse();
-		User userName=userRepository.getUser(name);
+		User userName = userRepository.getUser(name);
 		System.out.println(userName.getCountry().toString());
 		return response;
-		
+
 	}
 	
+	public String createRelationship(String name,String lovername) {
+
+		return userRepository.createRelationship(name,lovername);
+	}
+
 }

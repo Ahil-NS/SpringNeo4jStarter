@@ -16,9 +16,16 @@ public interface UserRepository extends GraphRepository<User> {
 
 	@Query("MATCH (u:Node) WHERE u.name= {name} SET u.newname={newname}")
 	public String updateUser(@Param("name") String name, @Param("newname") String newname);
-	
-	@Query("MATCH(u) RETURN u")
-	public User getUser(@Param("name") String name);
 
+	//@Query("MATCH(u) RETURN u")
+	@Query("MATCH (n:Node{name:{name}}) RETURN n")
+	public User getUser(@Param("name") String name);
+	
+	@Query("CREATE (le:Person {name:{name}}),(db:Person {name:{lovername}}),(le)-[:LOVES]->(db)RETURN le, db")
+	public String createRelationship(@Param("name") String name,@Param("lovername") String lovername);
+	
+	
+	
+	
 
 }
